@@ -431,11 +431,6 @@
         color: #BA1735;
     }
 
-    /*.widget-increase_sales--form .widget-bg {*/
-    /*    background: transparent url("https://127.0.0.1:8000/img/bg_form.png");*/
-    /*    opacity: 1;*/
-    /*}*/
-
     .widget-increase_sales--form .widget-title::before {
         content: none;
     }
@@ -535,10 +530,6 @@
         background-position: 50% 50%;
         border: 1px solid #D4D4C8;
     }
-
-    /*.widget-increase_sales .increase-form form .form-agreement input[type="checkbox"]:checked {*/
-    /*    background-image: url("/img/bg_form.png");*/
-    /*}*/
 
     .form__popup__row label {
         display: block;
