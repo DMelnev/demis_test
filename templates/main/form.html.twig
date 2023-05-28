@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Form Page{% endblock %}
+
+{% block body %}
+    <section class="site-section">
+        <div class="widget-increase_sales widget-increase_sales--form widget-alt">
+            <div class="wrap">
+                <div class="overlay">
+                    <div class="widget-bg"></div>
+                </div>
+            </div>
+            <div class="outer">
+                <div class="container">
+                    <div class="inner">
+                        <div class="widget-title text-center">
+                            Форма обратной связи
+                        </div>
+                        <div class="widget-text text-center">
+                            Оставьте заявку, и мы найдем точки роста и предложим решения для увеличения ваших продаж!
+                        </div>
+                        <div class="increase-form">
+                            <div id="callback_open">
+                                <div class="form__success">
+                                    {{ form_start(feedbackForm) }}
+                                    <div class="flex-grid flex-grid-default flex-grid-center">
+                                        <div class="width-1-2@s">
+                                            <div class="form__popup__row">
+                                                {{ form_row(feedbackForm.fullName, {
+                                                    attr: {placeholder: 'ФИО *'},
+                                                    label_attr: {class: 'styled__input'}
+                                                }) }}
+                                            </div>
+                                        </div>
+                                        <div class="width-1-2@s">
+                                            <div class="form__popup__row">
+                                                {{ form_row(feedbackForm.address, {
+                                                    attr: {placeholder: 'Адрес'},
+                                                    label_attr: {class: 'styled__input'}
+                                                }) }}
+                                            </div>
+                                        </div>
+                                        <div class="width-1-2@s">
+                                            <div class="form__popup__row">
+                                                {{ form_row(feedbackForm.phoneNumber, {
+                                                    attr: {placeholder: 'Контактный телефон *'},
+                                                    label_attr: {class: 'styled__input'}
+                                                }) }}
+                                            </div>
+                                        </div>
+                                        <div class="width-1-2@s">
+                                            <div class="form__popup__row">
+                                                {{ form_row(feedbackForm.email, {
+                                                    attr: {placeholder: 'E-mail'},
+                                                    label_attr: {class: 'styled__input'}
+                                                }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="width-1-2@s width-1-3@m text-center">
+                                            <button class="button button-primary button-expand btn">
+                                                Отправить заявку
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(feedbackForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="container">
+        {% for item in feedbacks %}
+            <div class="feedbacks">
+                <blockquote>
+                    <h3>{{ item.fullname }}</h3> {{ item.phoneNumber|phoneDecoration }}
+                    <div>
+                        {% if item.address %}
+                            <p>
+                                {{ item.address }}
+                            </p>
+                        {% endif %}
+                        {% if item.email %}
+                            <span>{{ item.email }}</span>
+                        {% endif %}
+                    </div>
+                </blockquote>
+            </div>
+        {% else %}
+            <div class="feedback">
+                <blockquote>
+                    <h2>Заявок не найдено</h2>
+                </blockquote>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

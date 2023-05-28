@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block body %}
+    <section class="site-section">
+        <div class="widget-increase_sales widget-increase_sales--form widget-alt">
+            <div class="container">
+                {% for item in news %}
+                    <div class="news">
+                        <blockquote>
+                            <h2>{{ item.title }}</h2>
+                            <div>
+                                <p>
+                                    {{ item.text|truncateSentence }}
+                                </p>
+                                <span>Опубликовано: </span>
+                                <small>{{ item.publishedAt|format_date(locale='ru', ) }}</small>
+                            </div>
+                        </blockquote>
+                    </div>
+                {% else %}
+                    <div class="feedback">
+                        <blockquote>
+                            <h2>Новостей не найдено</h2>
+                        </blockquote>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="container">
+                <div>
+                    <a href="{{ url('app_news') }}">Все новости</a>
+                </div>
+                <div>
+                    <a href="{{ url('app_form') }}">Обратная связь</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

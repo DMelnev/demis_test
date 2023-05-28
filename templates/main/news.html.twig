@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Form Page{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% for item in news %}
+            <div class="news">
+                <blockquote>
+                    <h2>{{item.title}}</h2>
+                    <div>
+                        <p>
+                            {{ item.text }}
+                        </p>
+                        <span>Опубликовано: </span>
+                        <small>{{ item.publishedAt|format_date(locale='ru', ) }}</small>
+                    </div>
+                </blockquote>
+            </div>
+        {% else %}
+            <div class="feedback">
+                <blockquote>
+                    <h2>Новостей не найдено</h2>
+                </blockquote>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
